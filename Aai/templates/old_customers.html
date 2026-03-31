@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Old Customers</title>
+<style>
+    body {
+        font-family: Arial;
+        background: #ffe6f0;
+        text-align: center;
+        padding: 40px;
+    }
+
+    h2 {
+    color: #cc0066;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+    /* Search Bar */
+    form {
+        margin-top: 20px;
+    }
+
+    form input {
+        padding: 10px;
+        width: 100%;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+    }
+
+    form button {
+        padding: 10px 18px;
+        border-radius: 20px;
+        border: none;
+        background: #ff3399;
+        color: white;
+        cursor: pointer;
+    }
+
+    form button:hover {
+        background: #e60073;
+    }
+
+    /* GRID FIX */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .folder {
+        background: #ff99cc;
+        padding: 20px 10px;
+        border-radius: 15px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+        transition: 0.3s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .folder:hover {
+        background: #ff3399;
+        transform: scale(1.05);
+    }
+</style>
+
+</head>
+<body>
+
+    <h2>Old Customers 📁</h2>
+
+    <!-- 🔍 Search Bar Here -->
+    <form method="GET" style="margin-top:20px;">
+        <input type="text" name="search" placeholder="Search by name..."
+               value="{{ search_query|default:'' }}"
+               style="padding:8px; width:250px; border-radius:20px; border:1px solid #ccc;">
+
+        <button type="submit"
+                style="padding:8px 15px; border-radius:20px; border:none; background:#ff3399; color:white;">
+            Search
+        </button>
+    </form>
+
+    <!-- 📁 Folder Grid -->
+    <div class="grid">
+        {% for customer in customers %}
+            <a href="{% url 'customer_detail' customer.id %}" class="folder">
+                {{ customer.name }}
+            </a>
+        {% empty %}
+            <p>No customers yet</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
+{% endblock %}

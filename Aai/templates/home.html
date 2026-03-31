@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aai Tailor</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #ffe6f0, #ffd6eb);
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #ff66a3;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-buttons button {
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 20px;
+            border: none;
+            background: white;
+            color: #ff3399;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-buttons button:hover {
+            background: #ffe6f0;
+            transform: scale(1.05);
+        }
+
+        /* Slider */
+        .slider {
+            margin: 40px auto;
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            animation: slide 9s infinite;
+        }
+
+        .slides img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        @keyframes slide {
+            0% {margin-left: 0%;}
+            33% {margin-left: -100%;}
+            66% {margin-left: -200%;}
+            100% {margin-left: 0%;}
+        }
+
+        .welcome {
+            font-size: 32px;
+            margin-top: 20px;
+            color: #cc0066;
+            animation: bounce 2s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from {transform: translateY(0px);}
+            to {transform: translateY(-10px);}
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+            .buttons a {
+                display: block;
+                width: 100%;
+                margin: 15px auto;
+                padding: 14px;
+                font-size: 18px;
+                border-radius: 30px;
+                text-decoration: none;
+                text-align: center;
+                transition: 0.3s;
+            }
+
+            .add-btn {
+                background-color: #ff3399;
+                color: white;
+            }
+
+            .add-btn:hover {
+                background-color: #e60073;
+                transform: scale(1.05);
+            }
+
+            .old-btn {
+                background-color: #333;
+                color: white;
+            }
+
+            .old-btn:hover {
+                background-color: #555;
+                transform: scale(1.05);
+            }
+
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">🧵 Aai Tailor</div>
+        <div class="nav-buttons">
+            <button>Today ▼</button>
+            <button>Expiry ▼</button>
+        </div>
+    </div>
+
+    <div class="slider">
+        <div class="slides">
+            <img src="{% static 'images/dress1.jpg' %}">
+            <img src="{% static 'images/dress2.jpg' %}">
+            <img src="{% static 'images/dress3.jpg' %}">
+        </div>
+    </div>
+
+    <div class="welcome">
+        Welcome Aai 👗
+    </div>
+
+    <div class="buttons">
+
+    <a href="{% url 'add_customer' %}" class="add-btn">
+        + Add Customer
+    </a>
+
+    <a href="{% url 'old_customers' %}" class="old-btn">
+        Old Customers
+    </a>
+
+</div>
+
+</body>
+</html>

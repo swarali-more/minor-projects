@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 style="color:#d81b60;">Add New Customer 👗</h2>
+
+<div style="
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    width:100%;
+    max-width:500px;
+    margin:20px auto;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+">
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="name" placeholder="Customer Name" required
+    style="
+        width:100%;
+        padding:12px;
+        margin-bottom:15px;
+        border-radius:25px;
+        border:1px solid #ccc;
+    ">
+
+    <input type="text" name="number" placeholder="Phone Number" required
+    style="
+        width:100%;
+        padding:12px;
+        margin-bottom:20px;
+        border-radius:25px;
+        border:1px solid #ccc;
+    ">
+
+    <button type="submit" style="
+        background:#ff2d8d;
+        color:white;
+        border:none;
+        padding:10px 25px;
+        border-radius:25px;
+        cursor:pointer;
+    ">
+        Save
+    </button>
+
+</form>
+
+<br>
+<a href="{% url 'old_customers' %}" style="color:#d81b60;">
+    View Old Customers
+</a>
+
+</div>
+
+{% endblock %}
